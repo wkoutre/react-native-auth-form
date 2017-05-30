@@ -3,17 +3,22 @@ import PropTypes from 'prop-types';
 import { View, Text, TextInput } from 'react-native';
 
 const Input = (props) => {
-	const { value, onChangeText, label } = props;
+	const { value, onChangeText, label, placeholder, secureTextEntry } = props;
 	const { inputStyle, labelStyle, containerStyle } = styles;
+
+	const autoCapitalize = !props.autoCapitalize ? 'sentences' : props.autoCapitalize;
 
 	return (
 		<View style={containerStyle}>
 			<Text style={labelStyle}>{label}</Text>
 			<TextInput
-				style={labelStyle}
+				placeholder={placeholder}
+				autoCorrect={false}
+				style={inputStyle}
 				value={value}
 				onChangeText={onChangeText}
-				style={{ height: 20, width: 100 }}
+				autoCapitalize={autoCapitalize}
+				secureTextEntry={secureTextEntry}
 			/>
 		</View>
 	);
@@ -26,7 +31,7 @@ const styles = {
 		paddingLeft: 5,
 		fontSize: 18,
 		lineHeight: 23,
-		flex: 2,
+		flex: 2
 	},
 	labelStyle: {
 		fontSize: 18,
@@ -42,7 +47,9 @@ const styles = {
 };
 
 Input.propTypes = {
-	label: PropTypes.string.isRequired
+	label: PropTypes.string.isRequired,
+	onChangeText: PropTypes.func.isRequired,
+	placeholder: PropTypes.string.isRequired
 };
 
 export { Input };
