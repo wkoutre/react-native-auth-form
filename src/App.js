@@ -46,8 +46,8 @@ class App extends React.Component {
 	render() {
 		return (
 			<View>
-			<Header headerText='APP' />
-			{this.showContent()}				
+				<Header headerText='APP' />
+				{this.showContent()}				
 			</View>
 			
 		);
